@@ -89,9 +89,22 @@ searchbutton.addEventListener("click", () => {
 
 checkwheather("Germany");
 
-document.querySelector(".ref").addEventListener("click", () => {
-  location.reload();
+let lastCity = "Germany";
+
+searchbutton.addEventListener("click", () => {
+  const city = inputcity.value.trim();
+  if (city) {
+    lastCity = city;
+    checkwheather(city);
+  } else {
+    alert("Please enter a valid city name");
+  }
 });
+
+document.querySelector(".ref").addEventListener("click", () => {
+  checkwheather(lastCity);
+});
+
 
 
 
